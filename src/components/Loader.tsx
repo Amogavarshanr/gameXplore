@@ -1,10 +1,13 @@
-import { Image, SimpleGrid } from "@chakra-ui/react";
+import { Card, CardBody, Skeleton, SkeletonText } from "@chakra-ui/react";
 
 const MyLoader = () => {
   return (
-    <SimpleGrid minChildWidth="max">
-      <Image src="src\assets\loading.png" />;
-    </SimpleGrid>
+    <Card>
+      <Skeleton height="200px" />
+      <CardBody>
+        <SkeletonText />
+      </CardBody>
+    </Card>
   );
 };
 
