@@ -17,6 +17,6 @@ export interface games {
 
 
 
-const useGames=(selectedGenre:Genere|null)=>useData<games>('/games',{params:{genres:selectedGenre?.id}},[selectedGenre?.id])
+const useGames=(selectedGenre:Genere|null,selectplatform:Platform|null)=>useData<games>('/games',{params:{genres:selectedGenre?.id,platforms:selectplatform?.id}},[selectedGenre?.id,selectplatform?.id])
     
 export default useGames
