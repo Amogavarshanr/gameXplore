@@ -6,10 +6,12 @@ import {
   Spinner,
   Button,
 } from "@chakra-ui/react";
-import useGeneres from "../Hooks/useGeneres";
+import useGeneres, { Genere } from "../Hooks/useGeneres";
 import Cropimage from "../services/Cropimage";
-
-const Generes = () => {
+interface Props {
+  Onselect: (genre: Genere) => void;
+}
+const Generes = ({ Onselect }: Props) => {
   const { data, error, isLoading } = useGeneres();
   if (error) return null;
   if (isLoading) return <Spinner />;
@@ -23,7 +25,9 @@ const Generes = () => {
               borderRadius={8}
               src={Cropimage(genre.image_background)}
             />
-            <Button variant="link">{genre.name}</Button>
+            <Button onClick={() => Onselect(genre)} variant="link">
+              {genre.name}
+            </Button>
           </HStack>
         </ListItem>
       ))}
