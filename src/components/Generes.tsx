@@ -10,8 +10,9 @@ import useGeneres, { Genere } from "../Hooks/useGeneres";
 import Cropimage from "../services/Cropimage";
 interface Props {
   Onselect: (genre: Genere) => void;
+  selectedGenre: Genere | null;
 }
-const Generes = ({ Onselect }: Props) => {
+const Generes = ({ Onselect, selectedGenre }: Props) => {
   const { data, error, isLoading } = useGeneres();
   if (error) return null;
   if (isLoading) return <Spinner />;
@@ -25,7 +26,11 @@ const Generes = ({ Onselect }: Props) => {
               borderRadius={8}
               src={Cropimage(genre.image_background)}
             />
-            <Button onClick={() => Onselect(genre)} variant="link">
+            <Button
+              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+              onClick={() => Onselect(genre)}
+              variant="link"
+            >
               {genre.name}
             </Button>
           </HStack>
