@@ -8,7 +8,7 @@ import { Genere } from "./Hooks/useGeneres";
 import PlatForms from "./components/Platforms";
 import { Platform } from "./Hooks/useGames";
 
-interface GameQuery {
+export interface GameQuery {
   genre: Genere | null;
   platform: Platform | null;
 }
@@ -42,10 +42,7 @@ function App() {
             selectPlatform={gamequery.platform}
             onPlatform={(platform) => setGamequery({ ...gamequery, platform })}
           />
-          <GamesGrid
-            selectPlatform={gamequery.platform}
-            selectedGenre={gamequery.genre}
-          />
+          <GamesGrid gamequery={gamequery} />
         </GridItem>
       </Grid>
     </>
